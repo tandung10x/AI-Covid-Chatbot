@@ -7,7 +7,7 @@ def create_bot(NAME):
                   logic_adapters = [
                     {
                         'import_path': 'chatterbot.logic.BestMatch',
-                        'default_response': 'I am sorry, but I do not understand. Please try again.',
+                        'default_response': 'I am sorry, I do not understand. Please try again.',
                         'maximum_similarity_threshold': 0.90
                     }],
                   storage_adapter = "chatterbot.storage.SQLStorageAdapter")
@@ -15,8 +15,8 @@ def create_bot(NAME):
 
 def custom_train(Bot):
     trainer = ChatterBotCorpusTrainer(Bot)
-    trainer.train("./data/QAList.yml")
+    trainer.train("./data/QAList.yml") # corpus of Q&As about Covid
 
-def get_start_chatbot(Bot, message):
+def respondQnA(Bot, message):
     response = Bot.get_response(message)
     return response
