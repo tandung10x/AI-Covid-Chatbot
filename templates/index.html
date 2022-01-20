@@ -8,6 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
   <link rel="icon" href="data:;base64,=">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
@@ -16,7 +17,7 @@
   <section class="msger">
     <header class="msger-header">
       <div class="msger-header-title">
-        <i class="fas fa-bug"></i> Covid19 Chatbot <i class="fas fa-bug"></i>
+        <i class="fas fa-robot"></i> Covid19 Chatbot <i class="fas fa-robot"></i>
       </div>
     </header>
 
@@ -40,6 +41,7 @@
 
     <form class="msger-inputarea">
       <input type="text" class="msger-input" id="textInput" placeholder="Enter your message...">
+      <i id="start-btn" class="bi bi-mic microphone-ico"></i>
       <button type="submit" class="msger-send-btn">Send</button>
     </form>
   </section>
@@ -47,28 +49,67 @@
   <!-- partial -->
   <script src='https://use.fontawesome.com/releases/v5.0.13/js/all.js'></script>
   <script>
+    // speech to text part
+    var speechRecognition = window.speechRecognition || window.webkitSpeechRecognition;
+    var recognition = new speechRecognition();
+    var content = '';
+    var textbox = $("#textInput");
+    recognition.continuous = true;
+
+    recognition.onresult = function(event){
+      var current = event.resultIndex;
+      var transcript = event.results[current][0].transcript;
+      content +=transcript;
+      textbox.val(content);
+    };
+    
+    let cnt = 0;
+    $("#start-btn").click(function (event){
+      if(cnt%2==0) 
+      {
+        $(".microphone-ico").css('color', 'red');
+        if(content.length) {
+          content +='';
+        }
+        recognition.start();
+        cnt++;
+      }
+      else
+      {
+        $(".microphone-ico").css('color', 'black');
+        content = '';
+        recognition.stop();
+        cnt++;
+      }
+    });
+
+    textbox.on('input', function(){
+      content = $(this).val();
+    });
+
     // Utils
     function get(selector, root = document) {
       return root.querySelector(selector);
     }
 
-    function formatDate(date) {
+    function formatDate(date) { // get the real time
       const h = "0" + date.getHours();
       const m = "0" + date.getMinutes();
       return `${h.slice(-2)}:${m.slice(-2)}`;
     }
 
-    const msgerForm = get(".msger-inputarea");
-    const msgerInput = get(".msger-input");
-    const msgerChat = get(".msger-chat");
+    const msgerForm = get(".msger-inputarea"); //
+    const msgerInput = get(".msger-input");    // get element by class
+    const msgerChat = get(".msger-chat");      //
 
-    const BOT_IMG = "/static/chatbot.png";
-    const PERSON_IMG = "/static/human.png";
+    const BOT_IMG = "../static/chatbot.png";  // chatbot avatar
+    const PERSON_IMG = "../static/human.png"; // human avatar
     const BOT_NAME = "Bob";
     const PERSON_NAME = "You";
 
-    function appendMessage(name, img, side, text) {
-      const msgHTML = `
+    function appendMessage(name, img, side, text) { // make the message box
+      const msgHTML = // template
+      `
       <div class="msg ${side}-msg">
         <div class="msg-img" style="background-image: url(${img})"></div>
 
@@ -95,12 +136,13 @@
       });
     }
 
-    msgerForm.addEventListener("submit", event => {
+    msgerForm.addEventListener("submit", event => { // event each time user enter a message
       event.preventDefault();
-      const msgText = msgerInput.value;
-      if (!msgText) return;
+      const msgText = msgerInput.value; // the message user enters
+      if(!msgText) return;
       appendMessage(PERSON_NAME, PERSON_IMG, "right", msgText);
       msgerInput.value = "";
+      content = '';
       botResponse(msgText);
     });
   </script>
