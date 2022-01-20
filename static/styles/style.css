@@ -148,5 +148,16 @@
   
   .msger-chat {
     background-color: #fcfcfe;
-    
+  }
+  .msg-text {
+    word-wrap: break-word;
+  }
+  
+  .microphone-ico {
+    cursor: pointer;
+    transition: background 0.23s;
+  }
+
+  .microphone-ico:hover {
+    background-color: rgb(196, 212, 212);
   }
