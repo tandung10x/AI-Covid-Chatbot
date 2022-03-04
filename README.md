@@ -2,7 +2,7 @@
 A chatbot can communicate with users through voice and text to do two specific tasks: 
 1. Checking if users having COVID-19.
 2. Answering real-time statistics and FAQs related to COVID-19 in all countries.
-<img src="https://user-images.githubusercontent.com/85373307/156718243-8353928b-cdf1-4983-94ca-0082f8ab2cd2.png" alt="100" width="250" />
+<img src="https://user-images.githubusercontent.com/85373307/156719455-689e6736-de63-444e-9cb5-7672f6d2e5df.png" width="420" />
 
 ## INSTALLATION: 
 Running this to install required packages:
