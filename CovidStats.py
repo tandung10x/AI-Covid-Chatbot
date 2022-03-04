@@ -9,7 +9,7 @@ from calendar import month_name
 from GetDataFile import DownloadFile
 from QnA import *
 
-#DownloadFile()
+DownloadFile()
 
 app = Flask(__name__)
 
