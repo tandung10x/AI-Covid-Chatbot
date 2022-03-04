@@ -2,6 +2,7 @@
 A chatbot can communicate with users through voice and text to do two specific tasks: 
 1. Checking if users having COVID-19.
 2. Answering real-time statistics and FAQs related to COVID-19 in all countries.
+![image](https://user-images.githubusercontent.com/85373307/156718243-8353928b-cdf1-4983-94ca-0082f8ab2cd2.png)
 
 ## INSTALLATION: 
 Running this to install required packages:
@@ -28,3 +29,4 @@ For two chatbot's questions: "How old are you?" and "Now measure your temperatur
 - *CovidStats.py*: To answer the COVID-19 statistics
 - *GetDataFile.py*: To automatically download the COVID-19 dataset (csv) to the data folder and convert it to sqlite
 - *QnA.py*: To answer FAQs related to COVID-19
+
