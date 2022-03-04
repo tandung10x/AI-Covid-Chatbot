@@ -4,6 +4,9 @@ A chatbot can communicate with users through voice and text to do two specific t
 2. Answering real-time statistics and FAQs related to COVID-19 in all countries.
 ![image](https://user-images.githubusercontent.com/85373307/156718243-8353928b-cdf1-4983-94ca-0082f8ab2cd2.png)
 
+![image](https://user-images.githubusercontent.com/85373307/156718652-324757ef-83cd-4b09-93de-c446b1433d50.png)
+
+
 ## INSTALLATION: 
 Running this to install required packages:
 - pip install chatterbot
