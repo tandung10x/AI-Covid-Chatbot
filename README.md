@@ -1,4 +1,4 @@
-# PROJECT: AI-POWERED COVID CHATBOT
+# AI-POWERED COVID CHATBOT
 A chatbot can communicate with users through voice and text to do two specific tasks: 
 - Checking if users having COVID-19.
 - Answering real-time statistics and FAQs related to COVID-19 in all countries.
